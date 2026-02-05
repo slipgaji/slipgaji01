@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Login Slip Gaji</title>
+  <style>
+    body {
+      font-family: 'Inter', 'Segoe UI', sans-serif;
+      background: #F4F7F5;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #2F3E37;
+    }
+
+    .box {
+      background: #ffffff;
+      width: 100%;
+      max-width: 380px;
+      padding: 32px;
+      border-radius: 16px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+      text-align: center;
+    }
+
+    .icon {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+
+    p {
+      font-size: 14px;
+      color: #6B7F76;
+      margin-bottom: 24px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1px solid #DDE6E1;
+      background: #F9FBFA;
+      font-size: 14px;
+      margin-bottom: 14px;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: #8FAF9F;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 12px;
+      background: #8FAF9F;
+      color: #ffffff;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.25s;
+    }
+
+    button:hover {
+      background: #6F9382;
+      transform: translateY(-2px);
+    }
+
+    .footer {
+      margin-top: 22px;
+      font-size: 11px;
+      color: #9DAFA6;
+    }
+  </style>
+</head>
+<body>
+
+<div class="box">
+  <div class="icon">🌿</div>
+  <h2>Slip Gaji Karyawan</h2>
+  <p>Silakan login untuk melihat slip gaji Anda</p>
+
+  <input type="text" id="username" placeholder="Username">
+  <input type="password" id="password" placeholder="Password">
+
+  <button onclick="login()">Login</button>
+
+  <div class="footer">
+    © 2026 PT EMPAT PEMUDA SUKSES
+  </div>
+</div>
+
+<script>
+  function login() {
+    var username = document.getElementById("username").value;
+    var password = document.getElementById("password").value;
+
+    // contoh login sederhana (bisa lo tambahin user)
+    if (
+      (username === "NABILA KHAIRUNNISA" && password === "KRY01@2026") ||
+      (username === "SANDY AGUSTINO" && password === "KRY02@2026") ||
+      (username === "MUHAMMAD WARDHANA" && password === "KRY03@2026")
+      (username === "ESLA ARDI FIANI" && password === "KRY04@2026")
+      (username === "PUTRI MAHARANI" && password === "KRY05@2026")
+   
+
+    ) {
+      localStorage.setItem("user", username);
+      window.location.href = "dashboard.html";
+    } else {
+      alert("Username atau password salah");
+    }
+  }
+</script>
+
+</body>
+</html>

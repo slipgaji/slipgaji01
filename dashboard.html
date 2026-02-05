@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard Slip Gaji</title>
+  <style>
+  body {
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    background: #F4F7F5;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #2F3E37;
+  }
+
+  .box {
+    background: #ffffff;
+    width: 100%;
+    max-width: 420px;
+    padding: 32px;
+    border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    text-align: center;
+  }
+
+  h2 {
+    margin-bottom: 6px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+
+  #info {
+    font-size: 14px;
+    color: #6B7F76;
+    margin-bottom: 24px;
+  }
+
+  label {
+    display: block;
+    text-align: left;
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 6px;
+    color: #4F6B5F;
+  }
+
+  select {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 1px solid #DDE6E1;
+    background: #F9FBFA;
+    font-size: 14px;
+    margin-bottom: 18px;
+    outline: none;
+  }
+
+  select:focus {
+    border-color: #8FAF9F;
+  }
+
+  a {
+    display: block;
+    background: #8FAF9F;
+    color: #ffffff;
+    padding: 14px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.25s ease;
+  }
+
+  a:hover {
+    background: #6F9382;
+    transform: translateY(-2px);
+  }
+
+  button {
+    margin-top: 18px;
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 12px;
+    background: transparent;
+    color: #8FAF9F;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.25s;
+  }
+
+  button:hover {
+    background: #F0F5F2;
+  }
+
+  .footer {
+    margin-top: 24px;
+    font-size: 11px;
+    color: #9DAFA6;
+  }
+</style>
+</head>
+<body>
+
+<div class="box">
+  <h2>Slip Gaji Karyawan</h2>
+  <p id="info"></p>
+
+  <label>Pilih Bulan Slip Gaji</label>
+  <select id="bulan" onchange="updateLink()">
+    <option value="2026-02">Februari 2026</option>
+    <option value="2026-01">Januari 2026</option>
+    <option value="2025-12">Desember 2025</option>
+  </select>
+
+  <a id="downloadLink" download>
+    📄 Download Slip Gaji (PDF)
+  </a>
+
+  <button onclick="logout()">Logout</button>
+</div>
+
+<script>
+  // ambil user login
+  var user = localStorage.getItem("user");
+
+  // kalau belum login → balikin ke index
+  if (!user) {
+    window.location.href = "index.html";
+  } else {
+    document.getElementById("info").innerText =
+      "Halo, " + user + ". Silakan download slip gaji Anda.";
+    updateLink();
+  }
+
+  function updateLink() {
+    var bulan = document.getElementById("bulan").value;
+    document.getElementById("downloadLink").href =
+      "slip/" + bulan + "/" + user + ".pdf";
+  }
+
+  function logout() {
+    localStorage.removeItem("user");
+    window.location.href = "index.html";
+  }
+</script>
+
+</body>
+</html>
